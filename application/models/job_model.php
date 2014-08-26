@@ -54,9 +54,9 @@ class Job_model extends CI_Model {
       'jobs_company' => $this->input->post('company'),
       'jobs_url' => $this->input->post('url'),
       'jobs_email' => $this->input->post('email'),
-      'jobs_update' => date('Y-m-d H:i:s')
+      'jobs_update' => $this->input->post('jobs_update')
     );
-    $this->db->insert('jobs_temp',$data);
+    $this->db->insert('jobs',$data);
   }
 
   public function search()

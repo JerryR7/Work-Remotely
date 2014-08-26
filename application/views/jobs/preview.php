@@ -21,24 +21,24 @@
       <div class="row clearfix">
         <div class="col-md-12 column">
           <br>
-          <h2> <?php echo $detail[0]['jobs_title'];?>  @ <?php echo $detail[0]['jobs_company'];?> </h2>
+          <h2> <?php echo $jobs_title;?>  @ <?php echo $jobs_company;?> </h2>
           <div class="group">
-            <span style="color:grey; font-weight:bold;"> <i class="glyphicon glyphicon-calendar"> </i> 刊登日期 <?php echo $detail[0]['jobs_update'];?></span>
+            <span style="color:grey; font-weight:bold;"> <i class="glyphicon glyphicon-calendar"> </i> 刊登日期 <?php echo $jobs_update;?></span>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <span style="color:grey; font-weight:bold;"> <i class="glyphicon glyphicon-map-marker"></i> 上班地點 <?php echo $detail[0]['jobs_place'];?> </span>
+            <span style="color:grey; font-weight:bold;"> <i class="glyphicon glyphicon-map-marker"></i> 上班地點 <?php echo $jobs_place;?> </span>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <span style="color:grey; font-weight:bold;" class="pull-right">
-             <span class="label <?php salary($detail[0]['jobs_lower']);?> ">新台幣 $<?php echo $detail[0]['jobs_lower'];?> 元</span>  ~ <span class="label <?php salary($detail[0]['jobs_higher']);?> ">新台幣 $<?php echo $detail[0]['jobs_higher'];?> 元</span>
+             <span class="label <?php salary($jobs_lower);?> ">新台幣 $<?php echo $jobs_lower;?> 元</span>  ~ <span class="label <?php salary($jobs_higher);?> ">新台幣 $<?php echo $jobs_higher;?> 元</span>
              </span>
           </div>
           <hr>
           <div>
-            <?php echo $this->markdown->parse($detail[0]['jobs_description']);?>
+            <?php echo $this->markdown->parse($jobs_description);?>
           </div>
           <br>
           <div class="well">
             <h4> 應徵方法 </h4>
-            <?php echo $detail[0]['jobs_hire'];?>
+            <?php echo $jobs_hire;?>
           </div>
         </div>
         <div class="col-md-11 column" style="padding-top: 30px">
@@ -49,9 +49,22 @@
             <br>
             <br>
           </div>
-              <?php echo anchor('jobs/done', '繼續下一步 > 刊登徵才啟事', 'class="btn btn-lg btn-primary" name="commit" type="submit"');?>
-              <p style="display: inline">or</p>
-              <a style="display: inline; cursor: hand" onclick="history.back()"> 回到上一步驟修改 </a>
+          <?php echo form_open('jobs/done');?>
+            <input type="hidden" name="job_title" value="<?php echo $jobs_title;?>" />
+            <input type="hidden" name="category" value="<?php echo $jobs_category;?>" />
+            <input type="hidden" name="lower_bound" value="<?php echo $jobs_lower;?>" />
+            <input type="hidden" name="higher_bound" value="<?php echo $jobs_higher;?>" />
+            <input type="hidden" name="work_place" value="<?php echo $jobs_place;?>" />
+            <input type="hidden" name="description" value="<?php echo $jobs_description;?>" />
+            <input type="hidden" name="how_hire" value="<?php echo $jobs_hire;?>" />
+            <input type="hidden" name="company" value="<?php echo $jobs_company;?>" />
+            <input type="hidden" name="url" value="<?php echo $jobs_url;?>" />
+            <input type="hidden" name="email" value="<?php echo $jobs_email;?>" />
+            <input type="hidden" name="jobs_update" value="<?php echo $jobs_update;?>" />
+            <input type="submit" class="btn btn-lg btn-primary" value="繼續下一步 > 刊登徵才啟事" />
+            <p style="display: inline">or</p>
+            <a style="display: inline; cursor: hand" onclick="history.back()"> 回到上一步驟修改 </a>
+          <?php echo form_close();?>
         </div>
       </div>
     </div>

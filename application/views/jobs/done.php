@@ -41,7 +41,20 @@
             <br>
             <br>
           </div>
-              <input class="btn btn-lg btn-primary" name="commit" type="submit" value="刊登徵才啟事">
+          <?php echo form_open('jobs/insert_jobs');?>
+            <input type="hidden" name="job_title" value="<?php echo $jobs_title;?>" />
+            <input type="hidden" name="category" value="<?php echo $jobs_category;?>" />
+            <input type="hidden" name="lower_bound" value="<?php echo $jobs_lower;?>" />
+            <input type="hidden" name="higher_bound" value="<?php echo $jobs_higher;?>" />
+            <input type="hidden" name="work_place" value="<?php echo $jobs_place;?>" />
+            <input type="hidden" name="description" value="<?php echo $jobs_description;?>" />
+            <input type="hidden" name="how_hire" value="<?php echo $jobs_hire;?>" />
+            <input type="hidden" name="company" value="<?php echo $jobs_company;?>" />
+            <input type="hidden" name="url" value="<?php echo $jobs_url;?>" />
+            <input type="hidden" name="email" value="<?php echo $jobs_email;?>" />
+            <input type="hidden" name="jobs_update" value="<?php echo $jobs_update;?>" />
+            <input class="btn btn-lg btn-primary" name="commit" type="submit" value="刊登徵才啟事">
+          <?php echo form_close();?>
         </div>
       </div>
     </div>
