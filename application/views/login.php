@@ -7,15 +7,17 @@
                     </div>
                     <div class="modal-body">
                     <!-- Form -->
-                      <form role="form">
-                        <div class="form-group">
+                      <?php echo form_open('',array('role'=>'form','class'=>'modal-body','id'=>'user_login'));?>
                         <h4>使用Email登入：</h4>
+                        <div class="form-group">
                           <label for="exampleInputEmail1">Email </label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                          <!-- <?php echo form_error('user_name'); ?> -->
+                          <input type="email" class="form-control" name="user_name" placeholder="Enter email">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">密碼</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                          <!-- <?php echo form_error('user_password'); ?> -->
+                          <input type="password" class="form-control" name="user_password" placeholder="Password">
                         </div>
                         <div>
                          <label><input type="checkbox"> 記住我</label>
@@ -24,12 +26,12 @@
                          <button type="submit" class="btn btn-success">確認</button>
                         </div>
                       </form>
-                      <!-- Form End -->
+                    <!-- Form End -->
                     </div>
                     <div class="modal-footer">
                       <div class="form-group" style="padding-right: 70%">
                         <p class="help-block" style="display: inline">還不是會員嗎？</p>
-                        <?php echo anchor('user/register', '立即註冊');?>
+                        <?php echo anchor('jobs/register', '立即註冊');?>
                       </div>
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       <!-- <button type="button" class="btn btn-primary">Save changes</button> -->

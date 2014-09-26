@@ -3,14 +3,14 @@
   {
     if($method == 'tab')
     {
-      if($value == 1)
+      if($value == 2)
       {
         echo " active";
       }
     }
     else if($method == 'nav')
     {
-      if($value == 1)
+      if($value == 2)
       {
         echo " class='active'";
       }

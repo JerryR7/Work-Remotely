@@ -199,6 +199,13 @@ if (defined('ENVIRONMENT'))
  * And away we go...
  *
  */
+
+BASEPATH.'codeigniter/CodeIgniter'.EXT;
+if (! ini_get('date.timezone'))
+{
+	date_default_timezone_set("Asia/Taipei");
+}
+
 require_once BASEPATH.'core/CodeIgniter.php';
 
 /* End of file index.php */

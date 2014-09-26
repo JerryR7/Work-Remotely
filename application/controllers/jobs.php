@@ -7,6 +7,7 @@ class Jobs extends CI_Controller {
     parent::__construct();
     $this->load->helper(array('url','form','html','xml'));
     $this->load->model('job_model');
+    $this->load->library('session');
   }
 
   public function index()
@@ -15,7 +16,7 @@ class Jobs extends CI_Controller {
       'data' => array(
         'category' => $this->job_model->category(),
         'tab' => $this->job_model->category(),
-      ),
+        ),
       'view' => array('carousel','post_job','content','login'),
     );
 
@@ -167,6 +168,97 @@ class Jobs extends CI_Controller {
     $this->job_model->create_jobs();
     redirect('jobs');
   }
+
+  public function register()
+  {
+    $data = array(
+      'data' => array(
+      ),
+      'view' => array('login','register'),
+    );
+
+    $this->load->view('template',$data);
+
+  }
+
+  public function create_user()  
+  {  
+    $this->load->library('form_validation');
+    $this->form_validation->set_rules('user_name', 'E-Mail', 'required|valid_email|is_unique[user.user_name]');
+    $this->form_validation->set_rules('user_password', '密碼',  'required');
+    $this->form_validation->set_rules('user_passconf', '確認密碼', 'required|matches[user_password]');
+    $this->form_validation->set_message('required', ' %s 不能空白');
+    $this->form_validation->set_message('is_unique', ' %s 已被使用');
+    $this->form_validation->set_message('matches', '請再次確認密碼');
+    $this->form_validation->set_error_delimiters('<span class="label label-default label-danger">', '</span>');
+
+    if ($this->form_validation->run() == FALSE)
+    {
+      $this->register();
+    }
+    else
+    {
+      $this->job_model->register();
+      $data = array(
+        'data' => array(
+        ),
+        'view' => array('login','register_done'),
+      );
+
+      $this->load->view('template',$data);
+    }
+  }
+  //     $this->load->view('register');
+  // }
+
+  public function login()
+  {
+    $data = array(
+      'data' => array(
+        ),
+      'view' => array('login')
+    );
+
+    $this->load->view('template',$data);
+
+  }
+
+
+
+  public function user_check()
+  {
+    $data = array(
+      'data' => array(
+        'user_name' => $this->job_model->user_check(),
+        'user_password' => $this->job_model->user_check()
+        ),
+      'view' => array()
+      )
+    if $data['data']['user_name']
+  }
+
+  public function about()  
+  {  
+    $data = array(
+      'data' => array(
+      ),
+      'view' => array('login','pages/about'),
+    );
+
+    $this->load->view('template',$data);
+  }
+
+  public function express()  
+  {  
+    $data = array(
+      'data' => array(
+      ),
+      'view' => array('login','pages/express'),
+    );
+
+    $this->load->view('template',$data);
+  }
+
 }
 
 /* End of file jobs.php */

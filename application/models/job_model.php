@@ -73,11 +73,25 @@ class Job_model extends CI_Model {
 
   }
 
-  public function preview_jobs()
+  public function register()
   {
-    $query = $this->db->order_by('jobs_id','desc')->get('jobs_temp');
+    $data = array(
+      'user_name' => $this->input->post('user_name'),
+      'user_password' => $this->input->post('user_password')
+      );
+    $this->db->insert('user',$data);
+  }
+
+  public function user_check()
+  {
+    $data = array(
+      'user_name' => $this->input->post('user_name'),
+      'user_password' => $this->input->post('user_password')
+      );
+    $query = $this->db->get_where('user', array('user_name' => $data);
     return $query->result_array();
   }
+
 }
 
 /* End of file job.php */
