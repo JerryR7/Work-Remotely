@@ -7,7 +7,7 @@
                     </div>
                     <div class="modal-body">
                     <!-- Form -->
-                      <?php echo form_open('',array('role'=>'form','class'=>'modal-body','id'=>'user_login'));?>
+                      <?php echo form_open('jobs/login',array('role'=>'form','class'=>'modal-body','id'=>'user_login'));?>
                         <h4>使用Email登入：</h4>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Email </label>

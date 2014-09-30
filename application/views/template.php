@@ -64,10 +64,12 @@
           <ul class="nav navbar-nav navbar-right">
             <li style="padding-right: 20px">
             <!-- Sign In  -->
+              <?php if(empty($user_login)) { ?>  
               <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#myModal"><strong>Sign In</strong></button>
-
-
-              <!-- Sign In End -->
+              <?php }else{ ?> 
+              <button type="button" class="btn btn-success navbar-btn"><strong>Sign Out</strong></button>
+              <?php } ?> 
+            <!-- Sign In End -->
             </li>
           </ul>
         </div>

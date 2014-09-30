@@ -213,28 +213,35 @@ class Jobs extends CI_Controller {
 
   public function login()
   {
-    $data = array(
-      'data' => array(
+    $user_check = $this->job_model->user_check();
+    $user = array(
+      'user_name' => $this->input->post('user_name'),
+      'user_password' => $this->input->post('user_password')
+      );
+
+    if ($user_check == null)
+    {
+      $data = array(
+        'data' => array(
         ),
-      'view' => array('login')
-    );
+        'view' => array('login','login_fail'),
+      );
 
-    $this->load->view('template',$data);
-
-  }
-
-
-
-  public function user_check()
-  {
-    $data = array(
-      'data' => array(
-        'user_name' => $this->job_model->user_check(),
-        'user_password' => $this->job_model->user_check()
+      $this->load->view('template',$data);
+    }
+    else
+    {
+      $this->session->set_userdata($user);
+      $data = array(
+        'data' => array(
+          'user_login' => $this->session->userdata('user_name'),
         ),
-      'view' => array()
-      )
-    if $data['data']['user_name']
+        'view' => array('login','login_success'),
+      );
+
+      $this->load->view('template',$data);
+    }
+
   }
 
   public function about()  

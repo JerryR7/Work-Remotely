@@ -84,12 +84,18 @@ class Job_model extends CI_Model {
 
   public function user_check()
   {
-    $data = array(
-      'user_name' => $this->input->post('user_name'),
-      'user_password' => $this->input->post('user_password')
-      );
-    $query = $this->db->get_where('user', array('user_name' => $data);
-    return $query->result_array();
+    $user_name = $this->input->post('user_name');
+    $user_password = $this->input->post('user_password');
+    $query = $this->db->get_where('user', array('user_name'=>$user_name,'user_password'=>$user_password));
+    
+    if ($query->num_rows() > 0) {
+      return $query->row();
+    }
+    else
+    {
+      return null;
+    }
+
   }
 
 }
