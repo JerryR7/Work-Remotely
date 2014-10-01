@@ -244,6 +244,14 @@ class Jobs extends CI_Controller {
 
   }
 
+  public function logout()
+  {
+    $this->session->unset_userdata('user_name');
+    $this->session->unset_userdata('user_password');
+    
+    redirect('');
+  }
+
   public function about()  
   {  
     $data = array(

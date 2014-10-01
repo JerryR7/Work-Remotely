@@ -1,7 +1,7 @@
 <div>
   <div class="carousel-inner">
     <div class="item active">
-      <img src="<?php echo base_url();?>img/remote-work-1.jpg" alt="...">
+      <img src="<?php echo base_url();?>img/Remote-work-1.jpg" alt="...">
       <div style="position: absolute; bottom: 130px; left: 3%; z-index: 10; padding-top: 20px; padding-bottom: 20px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); font-weight: 200; line-height: 2.1428571435; font-size: 17px;">
 <!--     <h1>
       Hello, world!

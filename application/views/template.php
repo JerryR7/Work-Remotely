@@ -64,10 +64,14 @@
           <ul class="nav navbar-nav navbar-right">
             <li style="padding-right: 20px">
             <!-- Sign In  -->
-              <?php if(empty($user_login)) { ?>  
+              <?php 
+              $a=$this->session->userdata('user_name');
+              if(empty($a)) { 
+              ?>  
               <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#myModal"><strong>Sign In</strong></button>
               <?php }else{ ?> 
-              <button type="button" class="btn btn-success navbar-btn"><strong>Sign Out</strong></button>
+              <p style="display: inline; color: white; font-size: 15px; padding: 1em"><?php echo $a; ?>，您好!</p>
+              <button type="button" class="btn btn-success navbar-btn" onclick="location.href='<?php echo site_url();?>/jobs/logout'"><strong>Sign Out</strong></button>
               <?php } ?> 
             <!-- Sign In End -->
             </li>
